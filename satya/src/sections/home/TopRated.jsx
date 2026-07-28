@@ -9,18 +9,18 @@ const TopRated = ({ topRatedProducts }) => {
         <section className="py-16 md:py-24">
             <div className="flex items-end justify-between gap-5 mb-10">
                 <div>
-                    <p className="font-space text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-300">
                         Customer Favorites
                     </p>
 
-                    <h2 className="font-inter text-3xl md:text-5xl font-semibold tracking-[-0.04em] mt-2">
-                        Top rated.
+                    <h2 className="font-inter text-3xl md:text-5xl font-bold tracking-[-0.04em] mt-2 text-white">
+                        Loved by shoppers.
                     </h2>
                 </div>
 
                 <button
                     onClick={() => navigate("/products")}
-                    className="group flex items-center gap-2 font-space text-xs text-(--text-muted) hover:text-(--text-color) transition-colors cursor-pointer"
+                    className="group flex items-center gap-2 text-sm font-medium text-white/55 hover:text-cyan-300 transition-colors cursor-pointer"
                 >
                     View all
                     <ArrowRight

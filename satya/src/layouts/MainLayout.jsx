@@ -6,7 +6,7 @@ import CartSidebar from "../components/CartSidebar";
 
 const MainLayout = () => {
   return (
-    <main className="min-h-screen w-full bg-(--bg-color) flex flex-col items-center">
+    <main className="skymart-app min-h-screen w-full flex flex-col items-center">
       <ScrollRestoration />
       <Navbar />
       <CartSidebar />

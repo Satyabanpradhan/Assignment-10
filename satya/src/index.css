@@ -65,6 +65,23 @@
     --font-space: "Space Mono", monospace;
 }
 
+.skymart-app {
+    --bg-color: #10122a;
+    --bg-secondary-color: #0d0f25;
+    --secondary-bg: #171935;
+    --text-color: #f8fafc;
+    --text-muted: rgb(255 255 255 / 0.55);
+    --secondary-color: rgb(255 255 255 / 0.65);
+    --accent-color: #67e8f9;
+    --border-color: rgb(255 255 255 / 0.13);
+    --blur-bg-color: rgb(255 255 255 / 0.07);
+    --hover-bg-color: rgb(255 255 255 / 0.1);
+    background:
+        radial-gradient(circle at 92% 5%, rgb(139 92 246 / 0.13), transparent 23rem),
+        radial-gradient(circle at 4% 30%, rgb(34 211 238 / 0.08), transparent 26rem),
+        #10122a;
+}
+
 
 .underline-effect {
     position: relative;

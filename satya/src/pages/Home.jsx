@@ -52,7 +52,7 @@ const Home = () => {
     };
 
     return (
-        <main className="flex-1 w-full bg-(--bg-color) text-(--text-color)">
+        <main className="flex-1 w-full text-(--text-color)">
             <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
                 
                 <Hero />
