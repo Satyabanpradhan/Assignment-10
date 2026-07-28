@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
-import { Search, SlidersHorizontal, ArrowDownAZ } from "lucide-react";
+import { Search, SlidersHorizontal, ArrowDownAZ, Sparkles } from "lucide-react";
 import ProductCards from "../components/ProductCards";
 import { MyStore } from "../contexts/MyContext";
 
@@ -105,9 +105,25 @@ const Products = () => {
     );
   }
 
+  const productTheme = {
+    "--bg-color": "#171a38",
+    "--bg-secondary-color": "#10132c",
+    "--secondary-bg": "#171a38",
+    "--text-color": "#f8fafc",
+    "--text-muted": "rgba(255, 255, 255, .55)",
+    "--border-color": "rgba(255, 255, 255, .15)",
+  };
+
   return (
-    <main className="max-w-[1920px] mx-auto">
-      <div className="p-8 md:p-12 flex flex-col sm:flex-row justify-start items-start sm:gap-6">
+    <main className="min-h-screen bg-[#10122a] px-4 py-5 text-white sm:px-8 sm:py-8" style={productTheme}>
+      <section className="relative mx-auto max-w-[1920px] overflow-hidden rounded-[2rem] border border-white/15 bg-[#171935] py-3 shadow-2xl" style={{ background: "radial-gradient(circle at 7% 7%, rgba(34,211,238,.15), transparent 22%), radial-gradient(circle at 92% 22%, rgba(139,92,246,.2), transparent 24%), #171935" }}>
+        <div className="pointer-events-none absolute -right-20 top-20 h-64 w-64 rounded-full border border-violet-300/15" />
+        <div className="pointer-events-none absolute -left-24 bottom-8 h-52 w-52 rounded-full bg-cyan-300/5 blur-2xl" />
+      <header className="relative flex items-center gap-2 px-5 pt-4 text-xl font-bold sm:px-8">
+        <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-violet-500 text-[#10122a]"><Sparkles size={18} fill="currentColor" /></span>
+        Sky<span className="text-cyan-300">Mart</span>
+      </header>
+      <div className="relative p-8 md:p-12 flex flex-col sm:flex-row justify-start items-start sm:gap-6">
         <h1 className="font-inter font-semibold text-(--text-color) text-5xl md:text-6xl uppercase tracking-tighter flex justify-start items-end">
           All
         </h1>
@@ -121,8 +137,8 @@ const Products = () => {
       </div>
 
       {/* Search, Categories, and Sort Section */}
-      <div className="px-4 md:px-8 pb-8 xborder-b border-(--border-color)">
-        <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="relative px-4 md:px-8 pb-8">
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-between rounded-2xl border border-white/10 bg-[#0c0d20]/45 p-4 backdrop-blur-sm">
           {/* Search */}
           <div className="relative w-full md:max-w-md">
             <Search
@@ -134,7 +150,7 @@ const Products = () => {
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-2xl border border-(--border-color) bg-(--secondary-bg-color) 
+              className="w-full pl-12 pr-4 py-3 rounded-xl border border-(--border-color) bg-(--bg-secondary-color) 
                 placeholder:text-(--text-muted) outline-none text-(--text-color) transition-colors font-space text-sm"
             />
           </div>
@@ -149,7 +165,7 @@ const Products = () => {
               <select
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className="w-full sm:w-56 pl-11 pr-8 py-3 appearance-none rounded-2xl border border-(--border-color) bg-(--secondary-bg-color) placeholder:text-(--text-muted) outline-none text-(--text-color) transition-colors font-space text-sm cursor-pointer capitalize"
+                className="w-full sm:w-56 pl-11 pr-8 py-3 appearance-none rounded-xl border border-(--border-color) bg-(--bg-secondary-color) placeholder:text-(--text-muted) outline-none text-(--text-color) transition-colors font-space text-sm cursor-pointer capitalize"
               >
                 <option value="all" className="text-(--text-color) bg-(--bg-color)">All Categories</option>
                 {categories.map((cat) => (
@@ -169,7 +185,7 @@ const Products = () => {
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                className="w-full sm:w-56 pl-11 pr-8 py-3 appearance-none rounded-2xl border border-(--border-color) bg-(--secondary-bg-color) placeholder:text-(--text-muted) outline-none text-(--text-color) transition-colors font-space text-sm cursor-pointer capitalize"
+                className="w-full sm:w-56 pl-11 pr-8 py-3 appearance-none rounded-xl border border-(--border-color) bg-(--bg-secondary-color) placeholder:text-(--text-muted) outline-none text-(--text-color) transition-colors font-space text-sm cursor-pointer capitalize"
               >
                 <option value="default" className="text-(--text-color) bg-(--bg-color)">Sort by: Default</option>
                 <option value="price-asc" className="text-(--text-color) bg-(--bg-color)">Price: Low to High</option>
@@ -182,7 +198,7 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 p-4 md:p-8">
+      <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 p-4 md:p-8">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((elem) => {
             return <ProductCards key={elem.id} product={elem} />;
@@ -198,6 +214,7 @@ const Products = () => {
           </div>
         )}
       </div>
+      </section>
     </main>
   );
 };

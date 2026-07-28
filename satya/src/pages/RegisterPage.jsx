@@ -1,196 +1,58 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LockKeyhole, Mail, ShoppingBag, Sparkles, UserRound } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
 
 const RegisterPage = () => {
-  const {
-    register,
-    registerFormSubmit,
-    handleSubmit,
-    navigate,
-    errors,
-    isSubmitting,
-  } = useAuth();
+  const { register, registerFormSubmit, handleSubmit, navigate, errors, isSubmitting } = useAuth();
 
   return (
-    <main className="min-h-screen bg-(--bg-color) text-(--text-color)">
-      <section className="max-w-7xl mx-auto min-h-screen flex flex-col justify-center px-5 sm:px-8 lg:px-20 py-12 sm:py-16 lg:py-20">
+    <main className="min-h-screen bg-[#10122a] px-4 py-5 text-white sm:px-8 sm:py-8">
+      <header className="mx-auto flex max-w-7xl items-center justify-between">
+        <button onClick={() => navigate("/")} className="flex items-center gap-2 text-xl font-bold cursor-pointer">
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-violet-500 text-[#10122a]"><Sparkles size={18} fill="currentColor" /></span>
+          Sky<span className="text-cyan-300">Mart</span>
+        </button>
+        <button onClick={() => navigate("/auth/login")} className="rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white/80 hover:border-cyan-300 hover:text-cyan-300 cursor-pointer">
+          Sign in
+        </button>
+      </header>
 
-        {/* Hero */}
-        <div className="mb-12 sm:mb-16 lg:mb-24">
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              {/* Login Link */}
-              <button
-                onClick={() => navigate("/auth/login")}
-                className="flex group items-center gap-2 whitespace-nowrap font-inter text-base lg:text-lg text-(--text-muted) transition-colors cursor-pointer"
-              >
-                <span className="hidden sm:block">Already have an account? </span><span className="sm:italic group-hover:text-(--text-color)">Sign in</span>
-
-                <ArrowRight
-                  size={18}
-                  className="group-hover:text-(--text-color) transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </button>
-              <h1 className="font-inter text-[clamp(3.1rem,9vw,7rem)] font-semibold tracking-tighter leading-none mt-3 sm:mt-4 lg:mt-5">
-                Create
-                <br />
-                Account.
-              </h1>
-              <p className="hidden sm:block mt-4 sm:mt-5 lg:mt-6 max-w-md font-space leading-relaxed text-(--text-muted)">
-                Create your account to save your wishlist, track
-                orders, and enjoy a personalized shopping experience.
-              </p>
-            </div>
+      <section className="mx-auto mt-8 grid min-h-[calc(100vh-9rem)] max-w-7xl overflow-hidden rounded-[2rem] border border-white/15 lg:grid-cols-[0.9fr_1.1fr]" style={{ background: "radial-gradient(circle at 15% 15%, rgba(34,211,238,.24), transparent 28%), radial-gradient(circle at 75% 78%, rgba(139,92,246,.32), transparent 32%), #171935" }}>
+        <div className="relative flex flex-col justify-between overflow-hidden p-7 sm:p-12 lg:p-16">
+          <div className="absolute -left-20 bottom-8 h-48 w-48 rounded-full border border-cyan-300/25" />
+          <div className="absolute -left-6 bottom-24 h-32 w-32 rounded-full bg-violet-500/20 blur-2xl" />
+          <div>
+            <p className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300"><span className="h-2 w-2 rounded-full bg-cyan-300" /> Your shopping space</p>
+            <h1 className="max-w-xl text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">Create your<br /><span className="bg-gradient-to-r from-cyan-300 to-violet-300 bg-clip-text text-transparent">account.</span></h1>
+            <p className="mt-6 max-w-md text-base leading-7 text-white/55 sm:text-lg">Create your account to save your wishlist, track orders, and enjoy a personalized shopping experience.</p>
+          </div>
+          <div className="mt-12 grid max-w-md grid-cols-2 gap-3 text-sm">
+            <div className="rounded-2xl border border-cyan-300/30 bg-cyan-300/10 p-4 backdrop-blur-sm"><p className="text-3xl font-bold text-cyan-300">24/7</p><p className="mt-1 text-white/55">Shop when it suits you</p></div>
+            <div className="rounded-2xl border border-violet-300/30 bg-violet-400/10 p-4 backdrop-blur-sm"><ShoppingBag className="text-violet-200" size={25} /><p className="mt-3 text-white/55">Everything saved in one place</p></div>
           </div>
         </div>
 
-        {/* Form */}
+        <div className="flex items-center bg-[#0c0d20]/45 p-6 sm:p-10">
+          <form onSubmit={handleSubmit(registerFormSubmit)} className="w-full rounded-3xl border border-white/15 bg-[#171a38]/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-300">Member access</p>
+            <h2 className="mt-3 text-3xl font-bold">Create your account.</h2>
+            <p className="mt-2 text-sm text-white/50">Enter your details below to continue.</p>
 
-        <form
-          onSubmit={handleSubmit(registerFormSubmit)}
-          className="max-w-full lg:max-w-7xl"
-        >
+            <label className="mt-7 block text-sm font-medium text-white/80">Full Name</label>
+            <div className="mt-2 flex items-center gap-3 rounded-xl border border-white/15 bg-[#0d0f25]/60 px-4 focus-within:border-cyan-300"><UserRound size={18} className="text-cyan-300" /><input type="text" placeholder="John Doe" className="w-full bg-transparent py-4 text-white outline-none placeholder:text-white/30" {...register("name", { required: "Name is required", minLength: { value: 2, message: "Name must be at least 2 characters" } })} /></div>
+            {errors.name && <p className="mt-2 text-sm text-red-400">{errors.name.message}</p>}
 
-          {/* Name */}
+            <label className="mt-5 block text-sm font-medium text-white/80">Email</label>
+            <div className="mt-2 flex items-center gap-3 rounded-xl border border-white/15 bg-[#0d0f25]/60 px-4 focus-within:border-cyan-300"><Mail size={18} className="text-cyan-300" /><input type="email" placeholder="john@example.com" className="w-full bg-transparent py-4 text-white outline-none placeholder:text-white/30" {...register("email", { required: "Email is required", pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email address" } })} /></div>
+            {errors.email && <p className="mt-2 text-sm text-red-400">{errors.email.message}</p>}
 
-          <div className="pb-4 sm:pb-8 lg:pb-10 border-b border-(--border-color)">
+            <label className="mt-5 block text-sm font-medium text-white/80">Password</label>
+            <div className="mt-2 flex items-center gap-3 rounded-xl border border-white/15 bg-[#0d0f25]/60 px-4 focus-within:border-cyan-300"><LockKeyhole size={18} className="text-cyan-300" /><input type="password" placeholder="••••••••" className="w-full bg-transparent py-4 text-white outline-none placeholder:text-white/30" {...register("password", { required: "Password is required", minLength: { value: 6, message: "Minimum 6 characters required" } })} /></div>
+            {errors.password && <p className="mt-2 text-sm text-red-400">{errors.password.message}</p>}
 
-            <label className="font-inter uppercase tracking-[0.25em] text-xs text-(--text-muted)">
-              Full Name
-            </label>
-
-            <input
-              type="text"
-              placeholder="John Doe"
-              className="flex-1
-                w-full
-                mt-3 sm:mt-4 lg:mt-5
-                bg-transparent
-                outline-none
-                font-inter
-                text-[clamp(2rem,6vw,4rem)]
-                font-medium
-                leading-tight
-                placeholder:text-(--text-muted)/35
-                caret-(--text-color)
-              "
-              {...register("name", {
-                required: "Name is required",
-                minLength: {
-                  value: 2,
-                  message: "Name must be at least 2 characters",
-                },
-              })}
-            />
-
-            {errors.name && (
-              <p className="mt-2 sm:mt-3 text-sm text-(--red)">
-                {errors.name.message}
-              </p>
-            )}
-
-          </div>
-
-          {/* Email */}
-
-          <div className="py-4 sm:py-8 lg:py-10 border-b border-(--border-color)">
-
-            <label className="font-inter uppercase tracking-[0.25em] text-xs text-(--text-muted)">
-              Email
-            </label>
-
-            <input
-              type="email"
-              placeholder="john@example.com"
-              className="flex-1
-                w-full
-                mt-3 sm:mt-4 lg:mt-5
-                bg-transparent
-                outline-none
-                font-inter
-                text-[clamp(2rem,6vw,4rem)]
-                font-medium
-                leading-tight
-                placeholder:text-(--text-muted)/35
-                caret-(--text-color)
-              "
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value:
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Enter a valid email address",
-                },
-              })}
-            />
-
-            {errors.email && (
-              <p className="mt-2 sm:mt-3 text-sm text-(--red)">
-                {errors.email.message}
-              </p>
-            )}
-
-          </div>
-
-          {/* Password */}
-
-          <div className="py-4 sm:py-8 lg:py-10 border-b border-(--border-color)">
-
-            <label className="font-inter uppercase tracking-[0.25em] text-xs text-(--text-muted)">
-              Password
-            </label>
-
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="flex-1
-                w-full
-                mt-3 sm:mt-4 lg:mt-5
-                bg-transparent
-                outline-none
-                font-inter
-                text-[clamp(2rem,6vw,4rem)]
-                font-medium
-                leading-tight
-                placeholder:text-(--text-muted)/35
-                caret-(--text-color)
-              "
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Minimum 6 characters required",
-                },
-              })}
-            />
-
-            {errors.password && (
-              <p className="mt-2 sm:mt-3 text-sm text-(--red)">
-                {errors.password.message}
-              </p>
-            )}
-
-          </div>
-
-          {/* Button */}
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="group mt-10 sm:mt-12 lg:mt-16 flex items-center gap-5 cursor-pointer"
-          >
-            <span className="font-inter text-[clamp(2rem,4vw,3rem)] font-semibold">
-              {isSubmitting ? "Creating Account..." : "Create Account"}
-            </span>
-
-            <div className="w-[clamp(3rem,4vw,4rem)] h-[clamp(3rem,4vw,4rem)] rounded-full border border-(--border-color) flex items-center justify-center gap-12 relative transition-all duration-300 group-hover:bg-(--text-color) group-hover:text-(--bg-color) overflow-hidden">
-              <ArrowRight className="absolute transition-transform duration-300 translate-x-0 group-hover:translate-x-10" />
-              <ArrowRight className="absolute transition-transform duration-300 -translate-x-10 group-hover:translate-x-0" />
-            </div>
-          </button>
-
-        </form>
-
+            <button type="submit" disabled={isSubmitting} className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-300 to-violet-400 px-5 py-4 font-bold text-[#10122a] hover:from-cyan-200 hover:to-violet-300 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer">{isSubmitting ? "Creating Account..." : "Create Account"} <ArrowRight size={19} /></button>
+            <p className="mt-6 text-center text-sm text-white/50">Already have an account? <button onClick={() => navigate("/auth/login")} type="button" className="font-semibold text-cyan-300 hover:underline cursor-pointer">Sign in</button></p>
+          </form>
+        </div>
       </section>
     </main>
   );
