@@ -8,9 +8,9 @@ const CartCard = ({ product }) => {
         useContext(MyStore);
 
     return (
-        <div className="group flex gap-4 p-3 rounded-2xl border border-(--border-color) bg-(--secondary-bg)">
+        <div className="group flex gap-4 p-3 rounded-2xl border border-(--border-color) bg-(--bg-color)">
             {/* Product Image */}
-            <div className="w-24 h-28 shrink-0 flex items-center justify-center rounded-xl bg-(--bg-color) p-3 overflow-hidden">
+            <div className="w-24 h-28 shrink-0 flex items-center justify-center rounded-xl bg-[#f3f0e8] p-3 overflow-hidden">
                 <img
                     src={product.thumbnail}
                     alt={product.title}

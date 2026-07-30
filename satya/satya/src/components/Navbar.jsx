@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "../contexts/ThemeContext";
 import { NavLink } from "react-router";
 import { MyStore } from "../contexts/MyContext";
 import {
     LogOut,
+    Moon,
     ShoppingCart,
+    Sun,
     UserRound,
     Menu,
     X,
@@ -15,16 +17,16 @@ import { useAuth } from "../hooks/useAuth";
 const Navbar = () => {
     let [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     let { isCartOpen, setIsCartOpen, totalQuantity } = useContext(MyStore);
+    const { theme, toggleTheme } = useTheme();
     const { logoutUser, loggedInUser } = useAuth();
 
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     return (
-        <nav className="max-w-[1920px] sticky top-0 z-20 w-full h-auto flex items-center justify-between px-4 lg:px-8 py-2 lg:py-4 text-(--text-color)">
-            <div className="absolute bg-linear-to-b from-(--bg-secondary-color) via-(--bg-color)/60 via-50% to-transparent w-full h-full top-0 left-0 z-[-1]" />
+        <nav className="max-w-[1920px] sticky top-0 z-20 w-full flex items-center justify-between border-b border-(--border-color) bg-(--bg-color) px-4 py-3 lg:px-8 text-(--text-color)">
             <div className="lg:flex-1 w-full lg:w-auto flex items-center justify-between z-10">
                 <NavLink
-                    to="/" className="bg-(--blur-bg-color) backdrop-blur-sm px-4 py-2 rounded-2xl font-instrument italic hover:scale-105 transform-3d hover:rotate-3d hover:rotate-y-360 transition-all duration-1000 ease-in-out cursor-pointer text-4xl lg:text-5xl">
+                    to="/" className="text-2xl font-bold text-blue-600 cursor-pointer">
                     SkyMart
                 </NavLink>
             </div>
@@ -34,7 +36,7 @@ const Navbar = () => {
                     to="/"
                     end
                     className={({ isActive }) =>
-                        `underline-effect font-space tracking-wider text-xl cursor-pointer ${isActive ? "text-(--text-color)" : "text-(--text-muted)"}`
+                        `text-sm font-medium cursor-pointer ${isActive ? "text-blue-600" : "text-(--text-muted) hover:text-blue-600"}`
                     }
                 >
                     Home
@@ -43,7 +45,7 @@ const Navbar = () => {
                     to="/products"
                     end
                     className={({ isActive }) =>
-                        `underline-effect font-space tracking-wider text-xl cursor-pointer ${isActive ? "text-(--text-color)" : "text-(--text-muted)"}`
+                        `text-sm font-medium cursor-pointer ${isActive ? "text-blue-600" : "text-(--text-muted) hover:text-blue-600"}`
                     }
                 >
                     Shop
@@ -51,7 +53,7 @@ const Navbar = () => {
                 <NavLink
                     to="/about"
                     className={({ isActive }) =>
-                        `underline-effect font-space tracking-wider text-xl cursor-pointer ${isActive ? "text-(--text-color)" : "text-(--text-muted)"}`
+                        `text-sm font-medium cursor-pointer ${isActive ? "text-blue-600" : "text-(--text-muted) hover:text-blue-600"}`
                     }
                 >
                     About
@@ -67,7 +69,16 @@ const Navbar = () => {
                         {loggedInUser?.name || "User Name"}
                     </p>
                 </div>
-                <ThemeToggle />
+                <button
+                    onClick={toggleTheme}
+                    className="block p-2 hover:bg-slate-100 rounded-md transition-colors cursor-pointer group"
+                >
+                    {theme === "dark" ? (
+                        <Moon className="group-hover:rotate-360 transition-all duration-600 ease-in-out" />
+                    ) : (
+                        <Sun className="group-hover:rotate-180 transition-all duration-600 ease-in-out" />
+                    )}
+                </button>
                 <NavLink
                     to="/wishlist"
                     className={({ isActive }) =>
@@ -78,7 +89,7 @@ const Navbar = () => {
                 </NavLink>
                 <button
                     onClick={() => setIsCartOpen((prev) => !prev)}
-                    className="relative backdrop-blur-sm p-4 hover:bg-(--hover-bg-color) rounded-xl transition-all duration-300 ease-in-out group cursor-pointer"
+                    className="relative p-2 hover:bg-slate-100 rounded-md transition-colors group cursor-pointer"
                 >
                     <ShoppingCart className="group-hover:text-(--text-color) transition-all duration-600 ease-in-out" />
                     {totalQuantity > 0 && (

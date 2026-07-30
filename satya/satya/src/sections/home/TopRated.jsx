@@ -13,14 +13,14 @@ const TopRated = ({ topRatedProducts }) => {
                         Customer Favorites
                     </p>
 
-                    <h2 className="font-inter text-3xl md:text-5xl font-bold tracking-[-0.04em] mt-2 text-(--text-color)">
+                    <h2 className="font-inter text-3xl md:text-5xl font-bold tracking-[-0.04em] mt-2 text-white">
                         Loved by shoppers.
                     </h2>
                 </div>
 
                 <button
                     onClick={() => navigate("/products")}
-                    className="group flex items-center gap-2 text-sm font-medium text-(--text-muted) hover:text-cyan-500 transition-colors cursor-pointer"
+                    className="group flex items-center gap-2 text-sm font-medium text-white/55 hover:text-cyan-300 transition-colors cursor-pointer"
                 >
                     View all
                     <ArrowRight

@@ -2,12 +2,12 @@
 
 :root,
 [data-theme="light"] {
-    --bg-color: #f8fafc;
-    --bg-secondary-color: #eef2ff;
+    --bg-color: #ffffff;
+    --bg-secondary-color: #f1f5f9;
     --secondary-bg: #ffffff;
-    --text-color: #18213a;
-    --text-muted: #64748b;
-    --secondary-color: #475569;
+    --text-color: #000000;
+    --text-muted: #8f8f8fb0;
+    --secondary-color: rgb(156, 156, 156);
 
     --accent-color: #2563eb;
 
@@ -23,19 +23,15 @@
     --yellow: #726700;
     --yellow-bg: #ffe600;
 
-    --box-shadow-color: rgb(15 23 42 / 0.16);
-    --text-shadow-color: #0f172a25;
+    --box-shadow-color: rgb(0 0 0 / 0.25);
+    --text-shadow-color: #0000003f;
 
-    --blur-bg-color: rgb(255 255 255 / 0.72);
-    --blur-text-color: rgb(15 23 42 / 0.08);
+    --blur-bg-color: #ffffff40;
+    --blur-text-color: #00000010;
 
-    --hover-bg-color: rgb(37 99 235 / 0.09);
+    --hover-bg-color: #00000010;
 
-    --border-color: rgb(30 41 59 / 0.14);
-
-    --hero-surface: #ffffff;
-    --hero-overlay: rgb(255 255 255 / 0.48);
-    --hero-gradient: radial-gradient(circle at 12% 20%, rgb(34 211 238 / 0.20), transparent 30%), radial-gradient(circle at 85% 72%, rgb(139 92 246 / 0.20), transparent 34%), #ffffff;
+    --border-color: #0000002d;
 }
 
 :root[data-theme="dark"] {
@@ -61,10 +57,6 @@
     --hover-bg-color: #ffffff0f;
 
     --border-color: #2c2c2c;
-
-    --hero-surface: #171935;
-    --hero-overlay: rgb(12 13 32 / 0.40);
-    --hero-gradient: radial-gradient(circle at 12% 20%, rgb(34 211 238 / 0.25), transparent 30%), radial-gradient(circle at 85% 72%, rgb(139 92 246 / 0.32), transparent 34%), #171935;
 }
 
 @theme {
@@ -73,45 +65,21 @@
     --font-space: "Space Mono", monospace;
 }
 
-html {
-    background: var(--bg-color);
-    color-scheme: light;
-}
-
-html[data-theme="dark"] {
-    color-scheme: dark;
-}
-
-body {
-    min-width: 320px;
-    background: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 250ms ease, color 250ms ease;
-}
-
 .skymart-app {
+    --bg-color: #10122a;
+    --bg-secondary-color: #0d0f25;
+    --secondary-bg: #171935;
+    --text-color: #f8fafc;
+    --text-muted: rgb(255 255 255 / 0.55);
+    --secondary-color: rgb(255 255 255 / 0.65);
+    --accent-color: #67e8f9;
+    --border-color: rgb(255 255 255 / 0.13);
+    --blur-bg-color: rgb(255 255 255 / 0.07);
+    --hover-bg-color: rgb(255 255 255 / 0.1);
     background:
-        radial-gradient(circle at 92% 5%, rgb(139 92 246 / 0.10), transparent 23rem),
-        radial-gradient(circle at 4% 30%, rgb(34 211 238 / 0.07), transparent 26rem),
-        var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 250ms ease, color 250ms ease;
-}
-
-.theme-surface {
-    background: var(--hero-gradient);
-    border-color: var(--border-color);
-    color: var(--text-color);
-}
-
-.theme-overlay {
-    background: var(--hero-overlay);
-}
-
-.theme-card {
-    background: var(--secondary-bg);
-    border-color: var(--border-color);
-    color: var(--text-color);
+        radial-gradient(circle at 92% 5%, rgb(139 92 246 / 0.13), transparent 23rem),
+        radial-gradient(circle at 4% 30%, rgb(34 211 238 / 0.08), transparent 26rem),
+        #10122a;
 }
 
 

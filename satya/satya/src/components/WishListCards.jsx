@@ -24,7 +24,7 @@ const WishListCards = ({ product }) => {
             {/* IMAGE */}
             <div
                 onClick={() => navigate(`/products/${product.id}`)}
-                className="w-28 h-28 sm:w-36 sm:h-36 shrink-0 rounded-2xl bg-(--bg-color) flex items-center justify-center cursor-pointer"
+                className="w-28 h-28 sm:w-36 sm:h-36 shrink-0 rounded-2xl bg-[#f3f0e8] flex items-center justify-center cursor-pointer"
             >
                 <img
                     src={product.thumbnail}

@@ -105,9 +105,18 @@ const Products = () => {
     );
   }
 
+  const productTheme = {
+    "--bg-color": "#171a38",
+    "--bg-secondary-color": "#10132c",
+    "--secondary-bg": "#171a38",
+    "--text-color": "#f8fafc",
+    "--text-muted": "rgba(255, 255, 255, .55)",
+    "--border-color": "rgba(255, 255, 255, .15)",
+  };
+
   return (
-    <main className="min-h-screen w-full px-4 py-5 text-(--text-color) sm:px-8 sm:py-8">
-      <section className="theme-surface relative mx-auto max-w-[1920px] overflow-hidden rounded-[2rem] border py-3 shadow-2xl">
+    <main className="min-h-screen bg-[#10122a] px-4 py-5 text-white sm:px-8 sm:py-8" style={productTheme}>
+      <section className="relative mx-auto max-w-[1920px] overflow-hidden rounded-[2rem] border border-white/15 bg-[#171935] py-3 shadow-2xl" style={{ background: "radial-gradient(circle at 7% 7%, rgba(34,211,238,.15), transparent 22%), radial-gradient(circle at 92% 22%, rgba(139,92,246,.2), transparent 24%), #171935" }}>
         <div className="pointer-events-none absolute -right-20 top-20 h-64 w-64 rounded-full border border-violet-300/15" />
         <div className="pointer-events-none absolute -left-24 bottom-8 h-52 w-52 rounded-full bg-cyan-300/5 blur-2xl" />
       <header className="relative flex items-center gap-2 px-5 pt-4 text-xl font-bold sm:px-8">
@@ -129,7 +138,7 @@ const Products = () => {
 
       {/* Search, Categories, and Sort Section */}
       <div className="relative px-4 md:px-8 pb-8">
-        <div className="theme-overlay flex flex-col md:flex-row gap-4 items-center justify-between rounded-2xl border border-(--border-color) p-4 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-between rounded-2xl border border-white/10 bg-[#0c0d20]/45 p-4 backdrop-blur-sm">
           {/* Search */}
           <div className="relative w-full md:max-w-md">
             <Search

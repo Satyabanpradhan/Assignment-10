@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "rewrites": [
         {
             "source": "/(.*)",
@@ -6,3 +7,16 @@
         }
     ]
 }
+=======
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "cd satya && npm ci",
+  "buildCommand": "cd satya && npm run build",
+  "outputDirectory": "satya/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+>>>>>>> 828dd5895cbd6e3351db386887c8f06c9b2a6627

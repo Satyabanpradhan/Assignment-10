@@ -9,7 +9,7 @@ const Categories = ({ categories, handleCategoryClick }) => {
       <div className="mb-6 flex items-end justify-between gap-4">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-300">Browse categories</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-(--text-color) md:text-4xl">Shop your way.</h2>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">Shop your way.</h2>
         </div>
         <button onClick={() => navigate("/products")} className="flex items-center gap-1 text-sm font-medium text-cyan-300 hover:text-cyan-200 cursor-pointer">
           View all <ArrowRight size={16} />
@@ -21,7 +21,7 @@ const Categories = ({ categories, handleCategoryClick }) => {
           <button
             key={category.slug}
             onClick={() => handleCategoryClick(category.slug)}
-            className="theme-card rounded-2xl border px-4 py-5 text-left text-sm font-medium capitalize text-(--secondary-color) backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-cyan-300/60 hover:bg-cyan-300/10 hover:text-cyan-500 cursor-pointer"
+            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 text-left text-sm font-medium capitalize text-white/75 backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-cyan-300/60 hover:bg-cyan-300/10 hover:text-cyan-200 cursor-pointer"
           >
             {category.name}
           </button>

@@ -14,7 +14,7 @@ const ProductCards = ({ product }) => {
         product.price * (1 - product.discountPercentage / 100);
 
     return (
-        <article className="group relative w-full overflow-hidden rounded-lg border border-(--border-color) bg-(--secondary-bg) transition-all hover:-translate-y-0.5 hover:shadow-lg">
+        <article className="group relative w-full overflow-hidden rounded-lg border border-(--border-color) bg-(--bg-color) transition-shadow hover:shadow-md">
             {/* Image Section */}
             <div
                 onClick={() => navigate(`/products/${product.id}`)}
@@ -27,7 +27,7 @@ const ProductCards = ({ product }) => {
                 />
 
                 {/* Category */}
-                <span className="absolute top-3 left-3 rounded bg-(--secondary-bg) px-2 py-1 text-xs font-medium text-(--secondary-color) capitalize shadow-sm">
+                <span className="absolute top-3 left-3 rounded bg-white px-2 py-1 text-xs font-medium text-slate-700 capitalize shadow-sm">
                     {product.category}
                 </span>
             </div>
@@ -150,7 +150,7 @@ const ProductCards = ({ product }) => {
                         }}
                         className={`aspect-square p-3 rounded-md border flex items-center justify-center transition-colors group cursor-pointer ${isInWishlist
                             ? "bg-red-50 border-red-200 text-red-500"
-                            : "border-(--border-color) bg-(--secondary-bg) text-(--text-muted) hover:text-red-500 hover:bg-(--red-bg)"
+                            : "border-(--border-color) bg-(--bg-color) text-(--text-muted) hover:text-red-500 hover:bg-red-50"
                             }`}>
                         <Heart
                             size={20}

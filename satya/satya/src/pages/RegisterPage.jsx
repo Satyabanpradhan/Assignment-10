@@ -1,21 +1,19 @@
 import { ArrowRight, LockKeyhole, Mail, ShoppingBag, Sparkles, UserRound } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
-import ThemeToggle from "../components/ThemeToggle";
 
 const RegisterPage = () => {
   const { register, registerFormSubmit, handleSubmit, navigate, errors, isSubmitting } = useAuth();
 
   return (
-    <main className="min-h-screen bg-(--bg-color) px-4 py-5 text-(--text-color) sm:px-8 sm:py-8">
+    <main className="min-h-screen bg-[#10122a] px-4 py-5 text-white sm:px-8 sm:py-8">
       <header className="mx-auto flex max-w-7xl items-center justify-between">
         <button onClick={() => navigate("/")} className="flex items-center gap-2 text-xl font-bold cursor-pointer">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-violet-500 text-[#10122a]"><Sparkles size={18} fill="currentColor" /></span>
           Sky<span className="text-cyan-300">Mart</span>
         </button>
-        <div className="flex items-center gap-3">
-          <ThemeToggle compact />
-          <button onClick={() => navigate("/auth/login")} className="rounded-full border border-(--border-color) px-4 py-2 text-sm font-medium text-(--secondary-color) hover:border-cyan-300 hover:text-cyan-500 cursor-pointer">Sign in</button>
-        </div>
+        <button onClick={() => navigate("/auth/login")} className="rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white/80 hover:border-cyan-300 hover:text-cyan-300 cursor-pointer">
+          Sign in
+        </button>
       </header>
 
       <section className="mx-auto mt-8 grid min-h-[calc(100vh-9rem)] max-w-7xl overflow-hidden rounded-[2rem] border border-white/15 lg:grid-cols-[0.9fr_1.1fr]" style={{ background: "radial-gradient(circle at 15% 15%, rgba(34,211,238,.24), transparent 28%), radial-gradient(circle at 75% 78%, rgba(139,92,246,.32), transparent 32%), #171935" }}>

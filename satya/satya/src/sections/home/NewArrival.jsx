@@ -2,27 +2,27 @@ import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router";
 import ProductCards from "../../components/ProductCards";
 
-const TopRated = ({ topRatedProducts }) => {
+const NewArrival = ({ newArrivals }) => {
     const navigate = useNavigate();
 
     return (
-        <section className="py-16 md:py-24">
+        <section className="py-16 md:py-24 border-t border-white/10">
             <div className="flex items-end justify-between gap-5 mb-10">
                 <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-300">
-                        Customer Favorites
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-violet-300">
+                        Fresh Finds
                     </p>
 
-                    <h2 className="font-inter text-3xl md:text-5xl font-bold tracking-[-0.04em] mt-2 text-(--text-color)">
-                        Loved by shoppers.
+                    <h2 className="font-inter text-3xl md:text-5xl font-bold tracking-[-0.04em] mt-2 text-white">
+                        Just landed.
                     </h2>
                 </div>
 
                 <button
                     onClick={() => navigate("/products")}
-                    className="group flex items-center gap-2 text-sm font-medium text-(--text-muted) hover:text-cyan-500 transition-colors cursor-pointer"
+                    className="group flex items-center gap-2 text-sm font-medium text-white/55 hover:text-violet-300 transition-colors cursor-pointer"
                 >
-                    View all
+                    Shop new arrivals
                     <ArrowRight
                         size={14}
                         className="transition-transform group-hover:translate-x-1"
@@ -30,9 +30,8 @@ const TopRated = ({ topRatedProducts }) => {
                 </button>
             </div>
 
-            {/* Products */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {topRatedProducts.map((product) => (
+                {newArrivals.map((product) => (
                     <ProductCards key={product.id} product={product} />
                 ))}
             </div>
@@ -40,4 +39,4 @@ const TopRated = ({ topRatedProducts }) => {
     );
 };
 
-export default TopRated;
+export default NewArrival;
